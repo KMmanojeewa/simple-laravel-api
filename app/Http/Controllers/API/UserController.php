@@ -17,7 +17,8 @@ class UserController extends Controller
      *@return \Illuminate\Http\Response
      */
 
-    public function login() {
+    public function login(Request $request) {
+//        echo '<pre>'.print_r($request,1);die();
         if(Auth::attempt(['email' => request('email'),'password' => request('password')])) {
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->accessToken;
